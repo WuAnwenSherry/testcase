@@ -1,0 +1,39 @@
+class Solution {
+public:
+    bool isRobotBounded(string instructions) {
+        int up=0;
+        int left=0;
+        int direction=0;
+        int whilemax=4;
+        while(whilemax>0){
+        for(int i=0;i<instructions.size();i++)
+        {
+            if(instructions[i]=='G')
+            {
+                switch(direction){
+                    case 0:up++;break;
+                    case 1:left++;break;
+                    case 2:up--;break;
+                    case 3:left--;break;
+                }
+            }
+            if(instructions[i]=='L')
+            {
+                direction++;
+                if(direction==4)
+                    direction=0;
+            }
+            if(instructions[i]=='R')
+            {
+                direction--;
+                if(direction==-1)
+                    direction=3;
+            }
+        }
+        if(up==0&&left==0)
+            return true;
+        whilemax--;
+    }
+        return false;
+     }
+};
